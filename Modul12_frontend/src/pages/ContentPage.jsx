@@ -54,7 +54,7 @@ const ContentPage = () => {
     return (
         <Container className="mt-4">
             <Stack direction="horizontal" gap={3} className="mb-3">
-                <h1 className="h4 fw-bold mb-0 text-nowrap">My Videos</h1>
+                <h1 className="h4 fw-bold mb-0 text-nowrap text-white">My Videos</h1>
                 <hr className="border-top border-light opacity-50 w-100" />
                 <div className="ms-auto text-nowrap">
                     <ModalCreateContent onClose={fetchContents} />
@@ -73,7 +73,7 @@ const ContentPage = () => {
                     <h6 className="mt-2 mb-0">Loading...</h6>
                 </div>
             ) : (contents?.length > 0 ? (
-                <Table variant="dark" striped bordered hover>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>No</th>

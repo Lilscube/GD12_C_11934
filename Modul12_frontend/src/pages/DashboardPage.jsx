@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Alert, Col, Container, Row, Spinner, Stack } from "react-bootstrap";
 import { GetAllContents } from "../api/apiContent";
 import { getThumbnail } from "../api";
+import { useNavigate } from "react-router-dom";
+import KomentarPage from "./KomentarPage";
 
 const DashboardPage = () => {
     const [contents, setContents] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setIsLoading(true);
@@ -59,9 +62,26 @@ const DashboardPage = () => {
                                     <h5 className="card-title text-truncate">
                                         {content.title}
                                     </h5>
-                                    <p className="card-text">
-                                        {content.description}
-                                    </p>
+                                    <p className="card-text">{content.description}</p>
+
+                                    <button
+                                        className="btn btn-primary w-100"
+                                        style={{
+                                            backgroundColor: "#007bff",
+                                            border: "none",
+                                        }}
+                                        onClick={() =>
+                                            navigate(`/user/komentar/${content.id}`, {
+                                                state: {
+                                                    imageUrl: getThumbnail(content.thumbnail),
+                                                    title: content.title,
+                                                    description: content.description,
+                                                },
+                                            })
+                                        }
+                                    >
+                                        Comment
+                                    </button>
                                 </div>
                             </div>
                         </Col>
