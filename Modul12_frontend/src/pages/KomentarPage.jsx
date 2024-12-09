@@ -18,7 +18,6 @@ const KomentarPage = () => {
     if (newComment.trim() === "") return;
 
     if (isEditing) {
-      // Update existing comment
       setComments(
         comments.map((comment) =>
           comment.id === editingId ? { ...comment, text: newComment } : comment
@@ -28,10 +27,9 @@ const KomentarPage = () => {
       setIsEditing(false);
       setEditingId(null);
     } else {
-      // Add new comment
       const newCommentData = {
         id: comments.length + 1,
-        username: "@user", // Ganti dengan username yang sedang login
+        username: "@user", 
         text: newComment,
         time: new Date().toLocaleString("en-US", {
           month: "long",

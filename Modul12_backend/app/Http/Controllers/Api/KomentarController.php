@@ -20,12 +20,12 @@ class KomentarController extends Controller
             return response()->json(['message' => 'Content not found'], 404);
         }
     
-        // Mengambil komentar dengan paginasi (opsional)
-        $komentars = $content->komentars()->with('user')->paginate(10); // Atau bisa pakai ->get() jika tidak membutuhkan paginasi
+       
+        $komentars = $content->komentars()->with('user')->paginate(10); 
     
         return response()->json([
             'message' => 'Comments retrieved successfully',
-            'data' => $komentars,  // Pastikan data yang dikirimkan sesuai dengan kebutuhan frontend
+            'data' => $komentars, 
         ], 200);
     }
 
@@ -55,7 +55,7 @@ class KomentarController extends Controller
         $komentar = $content->komentars()->create([
             'user_id' => $request->user_id,
             'comment' => $request->comment,
-            'date_added' => now(), // Tambahkan tanggal jika diperlukan
+            'date_added' => now(), 
         ]);
 
         return response()->json([
